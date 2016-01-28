@@ -1,0 +1,22 @@
+qcm_webservice:
+    resource: "@QCMwebserviceBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
+#FOSRestBundle 
+rest : 
+    resource : "routing_rest.yml"
+    type : rest 
+    prefix : /api
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

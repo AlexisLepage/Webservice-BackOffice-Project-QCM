@@ -1,0 +1,66 @@
+services:
+
+####################################################     Groupe Questionnaire    ####################################################
+    admin.qcm:
+        class: Admin\AdminBundle\Admin\QcmAdmin
+        arguments: [~, QCM\webserviceBundle\Entity\Qcm, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Gestion des Questionnaires, label: Qcm }
+
+    admin.category:
+        class: Admin\AdminBundle\Admin\CategoryAdmin
+        arguments: [~, QCM\webserviceBundle\Entity\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Gestion des Questionnaires, label: Catégorie }
+
+    admin.question:
+        class: Admin\AdminBundle\Admin\QuestionAdmin
+        arguments: [~, QCM\webserviceBundle\Entity\Question, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Gestion des Questionnaires, label: Question }
+
+    admin.answer:
+        class: Admin\AdminBundle\Admin\AnswerAdmin
+        arguments: [~, QCM\webserviceBundle\Entity\Answer, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Gestion des Questionnaires, label: Réponse }
+
+    admin.media:
+        class: Admin\AdminBundle\Admin\MediaAdmin
+        arguments: [~, QCM\webserviceBundle\Entity\Media, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Gestion des Questionnaires, label: Média }
+
+    admin.type_media:
+        class: Admin\AdminBundle\Admin\TypeMediaAdmin
+        arguments: [~, QCM\webserviceBundle\Entity\TypeMedia, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Gestion des Questionnaires, label: Type de média }
+
+####################################################     Groupe Utilisateurs    ####################################################
+
+    admin.user:
+        class: Admin\AdminBundle\Admin\UserAdmin
+        arguments: [~, QCM\webserviceBundle\Entity\User, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Gestion des Utilisateurs, label: Utilisateur }
+
+    admin.role:
+        class: Admin\AdminBundle\Admin\RoleAdmin
+        arguments: [~, QCM\webserviceBundle\Entity\Role, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Gestion des Utilisateurs, label: Rôle des utilisateurs }
+
+    admin.group_user:
+        class: Admin\AdminBundle\Admin\Group_userAdmin
+        arguments: [~, QCM\webserviceBundle\Entity\Group_user, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Gestion des Utilisateurs, label: Groupe }
+
+####################################################     Groupe Résultats    ####################################################
+
+    admin.result:
+        class: Admin\AdminBundle\Admin\User_QcmAdmin
+        arguments: [~, QCM\webserviceBundle\Entity\User_Qcm, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Gestion des liaisons et des Résultats, label: Utilisateur - QCM }
