@@ -73,7 +73,7 @@ sonata_admin:
     templates:
         dashboard:  SonataAdminBundle:Core:dashboard.html.twig
         show:       SonataAdminBundle:CRUD:show.html.twig
-
+        layout:     AdminAdminBundle::standard_layout.html.twig
 sonata_block:
     default_contexts: [cms]
     blocks:

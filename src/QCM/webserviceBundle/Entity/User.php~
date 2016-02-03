@@ -38,6 +38,14 @@ class User extends BaseUser
     protected $firstname;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=50, nullable=true)
+     * @Expose
+     */
+    protected $role;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -61,13 +69,6 @@ class User extends BaseUser
     protected $group_user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="QCM\webserviceBundle\Entity\Role", inversedBy="users")
-     * @ORM\JoinColumn(nullable=true)
-     * @Expose
-     */
-    protected $role;
-
-    /**
      * @ORM\OneToMany(targetEntity="QCM\webserviceBundle\Entity\User_Qcm", mappedBy="user", cascade={"remove"})
      * @Expose
      */
@@ -78,6 +79,9 @@ class User extends BaseUser
         parent::__construct();
         $this->createdAt = new \Datetime();
         $this->updateAt = new \Datetime();
+        if ($this->roles == "Admin") {
+            $this->enabled == true;
+        }
     }
 
     /**
@@ -112,6 +116,27 @@ class User extends BaseUser
     public function getFirstname()
     {
         return $this->firstname;
+    }
+
+
+    /**
+     * Get roles
+     *
+     * @return string
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
     }
 
     /**
@@ -221,32 +246,8 @@ class User extends BaseUser
         return $this->userQcms;
     }
 
-    /**
-     * Set role
-     *
-     * @param \QCM\webserviceBundle\Entity\Role $role
-     *
-     * @return User
-     */
-    public function setRole(\QCM\webserviceBundle\Entity\Role $role = null)
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    /**
-     * Get role
-     *
-     * @return \QCM\webserviceBundle\Entity\Role
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
-
     public function __toString()
     {
-        return $this->getFirstname() . ' ' . $this->getName();
+        return $this->getFirstname() . ' ' . $this->getUsername();
     }
 }

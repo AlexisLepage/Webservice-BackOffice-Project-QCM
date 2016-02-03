@@ -20,8 +20,8 @@ class UserAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $role_type = array(
-            'a:1:{i:0;s:10:"ROLE_USER";}' => 'Utilisateur',
-            'a:1:{i:0;s:10:"ROLE_ADMIN";}' => 'Administrateur',
+            'ROLE_USER' => 'Utilisateur',
+            'ROLE_ADMIN' => 'Administrateur'
         );
 
         $formMapper
@@ -37,7 +37,8 @@ class UserAdmin extends Admin
                     'invalid_message' => 'fos_user.password.mismatch',))
             ->end()
             ->with('Rôle')
-                ->add('roles', 'choice', array('choices' => $role_type))
+                ->add('roles', null , array('label' => 'Role (Pour créer un administrateur, mettre "ROLE_ADMIN")'))
+                ->add('enabled', null, array('label' => 'Accès au BackOffice'))
             ->end()
             ->with('Groupe')
                 ->add('group_user', null, array('label' => 'Appartient au groupe'))
@@ -53,7 +54,8 @@ class UserAdmin extends Admin
             ->add('firstname', null, array('label' => 'Prénom'))
             ->add('email', null, array('label' => 'Email'))
             ->add('password', null, array('label' => 'Mot de passe'))
-            ->add('role', null, array('label' => 'Rôle de l\'utilisateur'))
+            ->add('roles', null, array('label' => 'Rôle de l\'utilisateur'))
+            ->add('enabled', null, array('label' => 'Accès au BackOffice'))
             ->add('group_user', null, array('label' => 'Appartient au groupe'))        
         ;
     }
@@ -66,7 +68,8 @@ class UserAdmin extends Admin
             ->add('firstname', null, array('label' => 'Prénom'))
             ->add('email', null, array('label' => 'Email'))
             ->add('password', null, array('label' => 'Mot de passe'))
-            ->add('role', null, array('label' => 'Rôle de l\'utilisateur'))
+            ->add('roles', null, array('label' => 'Rôle de l\'utilisateur'))
+            ->add('enabled', null, array('label' => 'Accès au BackOffice'))
             ->add('group_user', null, array('label' => 'Appartient au groupe'))        
             # Action sur l'objet
             ->add('_action', 'actions', array(
@@ -85,7 +88,7 @@ class UserAdmin extends Admin
             ->add('username', null, array('label' => 'Nom'))
             ->add('firstname', null, array('label' => 'Prénom'))
             ->add('email', null, array('label' => 'Email'))
-            ->add('role', null, array('label' => 'Rôle de l\'utilisateur'))
+            ->add('roles', null, array('label' => 'Rôle de l\'utilisateur'))
             ->add('group_user', null, array('label' => 'Appartient au groupe'))       
         ;
 

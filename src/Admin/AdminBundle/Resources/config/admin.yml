@@ -15,9 +15,9 @@ services:
 
     admin.question:
         class: Admin\AdminBundle\Admin\QuestionAdmin
-        arguments: [~, QCM\webserviceBundle\Entity\Question, ~]
+        arguments: [~, QCM\webserviceBundle\Entity\Question, AdminAdminBundleAdmin:QuestionAdmin]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Gestion des Questionnaires, label: Question }
+            - { name: sonata.admin, manager_type: orm, group: Gestion des Questionnaires, label: Question, label_catalogue: SonataAdminBundle, label_translator_strategy: sonata.admin.label.strategy.underscore}
 
     admin.answer:
         class: Admin\AdminBundle\Admin\AnswerAdmin
@@ -44,12 +44,6 @@ services:
         arguments: [~, QCM\webserviceBundle\Entity\User, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Gestion des Utilisateurs, label: Utilisateur }
-
-    admin.role:
-        class: Admin\AdminBundle\Admin\RoleAdmin
-        arguments: [~, QCM\webserviceBundle\Entity\Role, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: Gestion des Utilisateurs, label: Rôle des utilisateurs }
 
     admin.group_user:
         class: Admin\AdminBundle\Admin\Group_userAdmin
