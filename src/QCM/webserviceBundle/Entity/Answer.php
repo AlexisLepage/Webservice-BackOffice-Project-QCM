@@ -45,9 +45,9 @@ class Answer
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="update_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      */
-    private $updateAt;
+    private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="QCM\webserviceBundle\Entity\Question", inversedBy="answers")
@@ -58,7 +58,7 @@ class Answer
     public function __construct()
     {
         $this->createdAt = new \Datetime();
-        $this->updateAt = new \Datetime();
+        $this->updatedAt = new \Datetime();
     }
 
     /**
@@ -144,27 +144,27 @@ class Answer
     }
 
     /**
-     * Set updateAt
+     * Set updatedAt
      *
-     * @param \DateTime $updateAt
+     * @param \DateTime $updatedAt
      *
      * @return Answer
      */
-    public function setUpdateAt($updateAt)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->updateAt = new \Datetime();
+        $this->updatedAt = new \Datetime();
 
         return $this;
     }
 
     /**
-     * Get updateAt
+     * Get updatedAt
      *
      * @return \DateTime
      */
-    public function getUpdateAt()
+    public function getUpdatedAt()
     {
-        return $this->updateAt;
+        return $this->updatedAt;
     }
 
     /**

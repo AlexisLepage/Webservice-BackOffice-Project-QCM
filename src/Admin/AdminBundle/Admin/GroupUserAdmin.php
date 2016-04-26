@@ -8,9 +8,9 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use QCM\webserviceBundle\Entity\Group_user;
+use QCM\webserviceBundle\Entity\GroupUser;
 
-class Group_userAdmin extends Admin
+class GroupUserAdmin extends Admin
 {
     public function getParentAssociationMapping()
     {

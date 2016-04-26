@@ -66,9 +66,9 @@ class Qcm
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="update_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      */
-    private $updateAt;
+    private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="QCM\webserviceBundle\Entity\Category", inversedBy="qcms")
@@ -89,7 +89,7 @@ class Qcm
     public function __construct()
     {
         $this->createdAt = new \Datetime();
-        $this->updateAt = new \Datetime();
+        $this->updatedAt = new \Datetime();
     }
 
     /**
@@ -247,27 +247,27 @@ class Qcm
     }
 
     /**
-     * Set updateAt
+     * Set updatedAt
      *
-     * @param \DateTime $updateAt
+     * @param \DateTime $updatedAt
      *
      * @return Qcm
      */
-    public function setUpdateAt($updateAt)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->updateAt = new \Datetime();
+        $this->updatedAt = new \Datetime();
 
         return $this;
     }
 
     /**
-     * Get updateAt
+     * Get updatedAt
      *
      * @return \DateTime
      */
-    public function getUpdateAt()
+    public function getUpdatedAt()
     {
-        return $this->updateAt;
+        return $this->updatedAt;
     }
 
     /**

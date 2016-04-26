@@ -38,9 +38,9 @@ class Category
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="update_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      */
-    private $updateAt;
+    private $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity="QCM\webserviceBundle\Entity\Qcm", mappedBy="category", cascade={"remove"})
@@ -50,7 +50,7 @@ class Category
     public function __construct()
     {
         $this->createdAt = new \Datetime();
-        $this->updateAt = new \Datetime();
+        $this->updatedAt = new \Datetime();
     }
 
 

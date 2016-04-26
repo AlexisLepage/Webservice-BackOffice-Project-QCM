@@ -46,8 +46,8 @@ services:
             - { name: sonata.admin, manager_type: orm, group: Gestion des Utilisateurs, label: Utilisateur }
 
     admin.group_user:
-        class: Admin\AdminBundle\Admin\Group_userAdmin
-        arguments: [~, QCM\webserviceBundle\Entity\Group_user, ~]
+        class: Admin\AdminBundle\Admin\GroupUserAdmin
+        arguments: [~, QCM\webserviceBundle\Entity\GroupUser, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Gestion des Utilisateurs, label: Groupe }
 

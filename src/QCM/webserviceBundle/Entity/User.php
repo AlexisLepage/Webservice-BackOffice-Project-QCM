@@ -32,7 +32,15 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=50, nullable=true)
+     * @ORM\Column(name="name", type="string", length=50)
+     * @Expose
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstname", type="string", length=50)
      * @Expose
      */
     protected $firstname;
@@ -41,7 +49,6 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="role", type="string", length=50, nullable=true)
-     * @Expose
      */
     protected $role;
 
@@ -56,15 +63,14 @@ class User extends BaseUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="update_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      * @Expose
      */
-    protected $updateAt;
+    protected $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="QCM\webserviceBundle\Entity\Group_user", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="QCM\webserviceBundle\Entity\GroupUser", inversedBy="users")
      * @ORM\JoinColumn(nullable=true)
-     * @Expose
      */
     protected $group_user;
 
@@ -78,7 +84,7 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->createdAt = new \Datetime();
-        $this->updateAt = new \Datetime();
+        $this->updatedAt = new \Datetime();
     }
 
     /**
@@ -89,6 +95,30 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return User
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -150,38 +180,38 @@ class User extends BaseUser
     }
 
     /**
-     * Set updateAt
+     * Set updatedAt
      *
-     * @param \DateTime $updateAt
+     * @param \DateTime $updatedAt
      *
      * @return User
      */
-    public function setUpdateAt($updateAt)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->updateAt = new \Datetime();
+        $this->updatedAt = new \Datetime();
 
         return $this;
     }
 
     /**
-     * Get updateAt
+     * Get updatedAt
      *
      * @return \DateTime
      */
-    public function getUpdateAt()
+    public function getUpdatedAt()
     {
-        return $this->updateAt;
+        return $this->updatedAt;
     }
 
 
     /**
      * Set groupUser
      *
-     * @param \QCM\webserviceBundle\Entity\Group_user $groupUser
+     * @param \QCM\webserviceBundle\Entity\GroupUser $groupUser
      *
      * @return User
      */
-    public function setGroupUser(\QCM\webserviceBundle\Entity\Group_user $groupUser)
+    public function setGroupUser(\QCM\webserviceBundle\Entity\GroupUser $groupUser)
     {
         $this->group_user = $groupUser;
 
@@ -191,7 +221,7 @@ class User extends BaseUser
     /**
      * Get groupUser
      *
-     * @return \QCM\webserviceBundle\Entity\Group_user
+     * @return \QCM\webserviceBundle\Entity\GroupUser
      */
     public function getGroupUser()
     {
@@ -250,4 +280,13 @@ class User extends BaseUser
         return $this;
     }
 
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
 }

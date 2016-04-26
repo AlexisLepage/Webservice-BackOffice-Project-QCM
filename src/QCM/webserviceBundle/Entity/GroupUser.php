@@ -5,12 +5,12 @@ namespace QCM\webserviceBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Group_user
+ * GroupUser
  *
- * @ORM\Table(name="group_user")
- * @ORM\Entity(repositoryClass="QCM\webserviceBundle\Repository\Group_userRepository")
+ * @ORM\Table(name="GroupUser")
+ * @ORM\Entity(repositoryClass="QCM\webserviceBundle\Repository\GroupUserRepository")
  */
-class Group_user
+class GroupUser
 {
     /**
      * @var int
@@ -38,9 +38,9 @@ class Group_user
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="update_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      */
-    private $updateAt;
+    private $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity="QCM\webserviceBundle\Entity\User", mappedBy="group_user", cascade={"remove"})
@@ -50,7 +50,7 @@ class Group_user
     public function __construct()
     {
         $this->createdAt = new \Datetime();
-        $this->updateAt = new \Datetime();
+        $this->updatedAt = new \Datetime();
     }
 
     /**
@@ -68,7 +68,7 @@ class Group_user
      *
      * @param string $name
      *
-     * @return Group_user
+     * @return GroupUser
      */
     public function setName($name)
     {
@@ -92,7 +92,7 @@ class Group_user
      *
      * @param \DateTime $createdAt
      *
-     * @return Group_user
+     * @return GroupUser
      */
     public function setCreatedAt($createdAt)
     {
@@ -112,27 +112,27 @@ class Group_user
     }
 
     /**
-     * Set updateAt
+     * Set updatedAt
      *
-     * @param \DateTime $updateAt
+     * @param \DateTime $updatedAt
      *
-     * @return Group_user
+     * @return GroupUser
      */
-    public function setUpdateAt()
+    public function setUpdatedAt($updatedAt)
     {
-        $this->updateAt = new \Datetime();
+        $this->updatedAt = new \Datetime();
 
         return $this;
     }
 
     /**
-     * Get updateAt
+     * Get updatedAt
      *
      * @return \DateTime
      */
-    public function getUpdateAt()
+    public function getUpdatedAt()
     {
-        return $this->updateAt;
+        return $this->updatedAt;
     }
 
     /**
@@ -140,7 +140,7 @@ class Group_user
      *
      * @param \QCM\webserviceBundle\Entity\User $user
      *
-     * @return Group_user
+     * @return GroupUser
      */
     public function addUser(\QCM\webserviceBundle\Entity\User $user)
     {

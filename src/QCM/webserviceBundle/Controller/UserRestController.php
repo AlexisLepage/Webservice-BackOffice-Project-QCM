@@ -11,4 +11,12 @@ class UserRestController extends Controller
   	$users = $this->getDoctrine()->getRepository('QCMwebserviceBundle:User')->findAll();
   	return $users;
   }
+
+  public function getUserAction($username){
+    $user = $this->getDoctrine()->getRepository('QCMwebserviceBundle:User')->findOneByUsername($username);
+    if(!is_object($user)){
+      throw $this->createNotFoundException();
+    }
+    return $user;
+  }
 }

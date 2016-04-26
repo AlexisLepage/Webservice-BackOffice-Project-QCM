@@ -26,7 +26,8 @@ class UserAdmin extends Admin
 
         $formMapper
             ->with('Utilisateur')       
-                ->add('username', null, array('label' => 'Nom'))
+                ->add('username', null, array('label' => 'Username'))
+                ->add('name', null, array('label' => 'Nom'))
                 ->add('firstname', null, array('label' => 'Prénom'))
                 ->add('email', null, array('label' => 'Email'))
                 ->add('plainPassword', 'repeated', array(
@@ -50,7 +51,8 @@ class UserAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('username', null, array('label' => 'Nom'))
+            ->add('username', null, array('label' => 'Username'))
+            ->add('name', null, array('label' => 'Nom'))
             ->add('firstname', null, array('label' => 'Prénom'))
             ->add('email', null, array('label' => 'Email'))
             ->add('password', null, array('label' => 'Mot de passe'))
@@ -64,7 +66,8 @@ class UserAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('username', null, array('label' => 'Nom'))
+            ->add('username', null, array('label' => 'Username'))
+            ->add('name', null, array('label' => 'Nom'))
             ->add('firstname', null, array('label' => 'Prénom'))
             ->add('email', null, array('label' => 'Email'))
             ->add('password', null, array('label' => 'Mot de passe'))
@@ -85,7 +88,8 @@ class UserAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('username', null, array('label' => 'Nom'))
+            ->add('username', null, array('label' => 'Username'))
+            ->add('name', null, array('label' => 'Nom'))
             ->add('firstname', null, array('label' => 'Prénom'))
             ->add('email', null, array('label' => 'Email'))
             ->add('roles', null, array('label' => 'Rôle de l\'utilisateur'))

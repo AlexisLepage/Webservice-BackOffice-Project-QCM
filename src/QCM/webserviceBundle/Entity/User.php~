@@ -25,9 +25,16 @@ class User extends BaseUser
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Expose
      */
     protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=50, nullable=true)
+     * @Expose
+     */
+    protected $name;
 
     /**
      * @var string
@@ -41,7 +48,6 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="role", type="string", length=50, nullable=true)
-     * @Expose
      */
     protected $role;
 
@@ -56,15 +62,14 @@ class User extends BaseUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="update_at", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      * @Expose
      */
-    protected $updateAt;
+    protected $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="QCM\webserviceBundle\Entity\Group_user", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="QCM\webserviceBundle\Entity\GroupUser", inversedBy="users")
      * @ORM\JoinColumn(nullable=true)
-     * @Expose
      */
     protected $group_user;
 
@@ -78,10 +83,7 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->createdAt = new \Datetime();
-        $this->updateAt = new \Datetime();
-        if ($this->roles == "Admin") {
-            $this->enabled == true;
-        }
+        $this->updatedAt = new \Datetime();
     }
 
     /**
@@ -92,6 +94,30 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return User
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -116,17 +142,6 @@ class User extends BaseUser
     public function getFirstname()
     {
         return $this->firstname;
-    }
-
-
-    /**
-     * Get roles
-     *
-     * @return string
-     */
-    public function getRoles()
-    {
-        return $this->roles;
     }
 
     /**
@@ -191,11 +206,11 @@ class User extends BaseUser
     /**
      * Set groupUser
      *
-     * @param \QCM\webserviceBundle\Entity\Group_user $groupUser
+     * @param \QCM\webserviceBundle\Entity\GroupUser $groupUser
      *
      * @return User
      */
-    public function setGroupUser(\QCM\webserviceBundle\Entity\Group_user $groupUser)
+    public function setGroupUser(\QCM\webserviceBundle\Entity\GroupUser $groupUser)
     {
         $this->group_user = $groupUser;
 
@@ -205,7 +220,7 @@ class User extends BaseUser
     /**
      * Get groupUser
      *
-     * @return \QCM\webserviceBundle\Entity\Group_user
+     * @return \QCM\webserviceBundle\Entity\GroupUser
      */
     public function getGroupUser()
     {
@@ -249,5 +264,31 @@ class User extends BaseUser
     public function __toString()
     {
         return $this->getFirstname() . ' ' . $this->getUsername();
+    }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     *
+     * @return User
+     */
+    public function setRole($role)
+    {
+        $this->roles = $role;
+        return $this;
+    }
+
+
+
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 }
