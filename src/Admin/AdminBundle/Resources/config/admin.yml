@@ -15,9 +15,9 @@ services:
 
     admin.question:
         class: Admin\AdminBundle\Admin\QuestionAdmin
-        arguments: [~, QCM\webserviceBundle\Entity\Question, AdminAdminBundleAdmin:QuestionAdmin]
+        arguments: [~, QCM\webserviceBundle\Entity\Question, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Gestion des Questionnaires, label: Question, label_catalogue: SonataAdminBundle, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - { name: sonata.admin, manager_type: orm, group: Gestion des Questionnaires, label: Question }
 
     admin.answer:
         class: Admin\AdminBundle\Admin\AnswerAdmin
