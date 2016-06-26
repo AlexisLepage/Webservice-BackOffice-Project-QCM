@@ -3,3 +3,7 @@ users :
     type: rest
     resource:     QCM\webserviceBundle\Controller\UserRestController
     name_prefix:  api_
+
+update_qcm:
+    pattern: /update_qcm
+    defaults: { _controller:QCMwebserviceBundle:QcmRest:updateQcm}
