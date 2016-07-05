@@ -95,7 +95,7 @@ class User_Qcm
      */
     public function setIsDone($isDone)
     {
-        $this->isDone = false;
+        $this->isDone = $isDone;
 
         return $this;
     }

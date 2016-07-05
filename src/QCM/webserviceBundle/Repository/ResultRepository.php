@@ -10,4 +10,18 @@ namespace QCM\webserviceBundle\Repository;
  */
 class ResultRepository extends \Doctrine\ORM\EntityRepository
 {
+	/**
+     * Find all fds with Chemical product Identifier parameter.
+     *
+     * @return PersistentCollection
+     */
+    public function myFindUserQcm($idQcm, $idUser)
+    {
+        $qb = $this->createQueryBuilder('uq');
+
+        $qb->where('uq.qcm =' . $idQcm);
+        $qb->andWhere('uq.user =' . $idUser);
+
+        return $qb->getQuery()->setMaxResults(1)->getSingleResult();
+    }
 }

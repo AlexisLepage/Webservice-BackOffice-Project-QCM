@@ -7,3 +7,7 @@ users :
 update_qcm:
     pattern: /update_qcm
     defaults: { _controller:QCMwebserviceBundle:QcmRest:updateQcm}
+
+post_connection:
+    pattern: /auth
+    defaults: { _controller:QCMwebserviceBundle:AuthRest:postConnection}
