@@ -21,7 +21,9 @@ class User_QcmAdmin extends Admin
     {
         $formMapper       
             ->add('user', null, array('label' => 'Utilisateur'))
-            ->add('qcm', null, array('label' => 'Questionnaire'))     
+            ->add('qcm', null, array('label' => 'Questionnaire'))
+            ->add('note', null, array('label' => 'Note'))
+            ->add('isDone', null, array('label' => 'a été fait'))   
         ;
     }
 
